@@ -59,4 +59,28 @@ class SiteController
 
         return true;
     }
+
+    public function actionDelete($id)
+    {
+        $tasksList = Task::getTasksList();
+
+        Task::delete($id);
+        header('Location: /');
+
+        require_once(ROOT.'/views/site/index.php');
+
+        return true;
+    }
+
+    public function actionTruncate()
+    {
+        $tasksList = Task::getTasksList();
+
+        Task::truncate();
+        header('Location: /');
+
+        require_once(ROOT.'/views/site/index.php');
+
+        return true;
+    }
 }

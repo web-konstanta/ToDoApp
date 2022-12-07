@@ -68,4 +68,30 @@ class Task
 
         $result->execute();
     }
+
+    public static function delete($id)
+    {
+        $id = intval($id);
+
+        if ($id) {
+            $db = Db::getConnection();
+
+            $sql = 'DELETE FROM tasks WHERE id = :id';
+
+            $result = $db->prepare($sql);
+            $result->bindParam(':id', $id, PDO::PARAM_INT);
+
+            return $result->execute();
+        }
+    }
+
+    public static function truncate()
+    {
+        $db = Db::getConnection();
+
+        $sql = 'TRUNCATE tasks';
+        $result = $db->prepare($sql);
+
+        return $result->execute();
+    }
 }

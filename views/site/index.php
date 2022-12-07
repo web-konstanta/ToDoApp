@@ -3,6 +3,9 @@
     <button type="button" class="btn btn-primary">
         <a href="/create" style="color: white; text-decoration: none">Add new task +</a>
     </button>
+    <button type="button" class="btn btn-danger">
+        <a href="/truncate" style="color: white; text-decoration: none">Delete all tasks</a>
+    </button>
     <table class="table">
         <thead>
         <tr>
@@ -23,7 +26,7 @@
                     <button type="button" class="btn btn-success"><a href="/edit/<?php echo $taskItem['id']; ?>" style="color: white; text-decoration: none">Edit</a></button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger">Delete</button>
+                    <button type="button" class="btn btn-danger"><a href="/delete/<?php echo $taskItem['id']; ?>" style="color: white; text-decoration: none">Delete</a></button>
                 </td>
             </tr>
         <?php endforeach; ?>
