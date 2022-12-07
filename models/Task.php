@@ -21,6 +21,20 @@ class Task
         return $tasks;
     }
 
+    public static function getTaskById($id)
+    {
+        $id = intval($id);
+
+        if ($id) {
+            $db = Db::getConnection();
+
+            $result = $db->query('SELECT * FROM tasks WHERE id = '.$id);
+            $result->setFetchMode(PDO::FETCH_ASSOC);
+
+            return $result->fetch();
+        }
+    }
+
     public static function create($name, $description)
     {
         $db = Db::getConnection();
@@ -35,5 +49,23 @@ class Task
             header('Location: /');
         }
         die('failed to add');
+    }
+
+    public static function update($id, $name, $description)
+    {
+        $db = Db::getConnection();
+
+        $sql = 'UPDATE tasks
+            SET
+                name = :name,
+                description = :description
+            WHERE id = :id';
+
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        $result->bindParam(':name', $name, PDO::PARAM_STR);
+        $result->bindParam(':description', $description, PDO::PARAM_STR);
+
+        $result->execute();
     }
 }

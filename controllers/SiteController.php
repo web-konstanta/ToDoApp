@@ -37,4 +37,26 @@ class SiteController
 
         return true;
     }
+
+    public function actionUpdate($id)
+    {
+        $taskItem = Task::getTaskById($id);
+
+        $name = '';
+        $description = '';
+        $result = false;
+
+        if (isset($_POST['submit'])) {
+            $name = $_POST['name'];
+            $description = $_POST['description'];
+
+            Task::update($id, $name, $description);
+
+            header('Location: /');
+        }
+
+        require_once(ROOT.'/views/site/edit.php');
+
+        return true;
+    }
 }

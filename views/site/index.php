@@ -20,7 +20,7 @@
                 <td><?php echo $taskItem['description']; ?></td>
                 <td><?php echo $taskItem['date']; ?></td>
                 <td>
-                    <button type="button" class="btn btn-success">Edit</button>
+                    <button type="button" class="btn btn-success"><a href="/edit/<?php echo $taskItem['id']; ?>" style="color: white; text-decoration: none">Edit</a></button>
                 </td>
                 <td>
                     <button type="button" class="btn btn-danger">Delete</button>

@@ -30,6 +30,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
@@ -46,7 +47,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670411064884</updated>
-      <workItem from="1670411067246" duration="3167000" />
+      <workItem from="1670411067246" duration="3337000" />
+      <workItem from="1670414470635" duration="1459000" />
     </task>
     <servers />
   </component>
