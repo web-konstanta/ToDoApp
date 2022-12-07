@@ -1,13 +1,8 @@
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>ToDo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-</head>
-<body>
-<div class="container">
+<?php require_once(ROOT.'/views/layouts/header.php'); ?>
     <h1>ToDo Web Application</h1>
-    <button type="button" class="btn btn-primary">Add new task +</button>
+    <button type="button" class="btn btn-primary">
+        <a href="/create" style="color: white; text-decoration: none">Add new task +</a>
+    </button>
     <table class="table">
         <thead>
         <tr>
@@ -34,6 +29,4 @@
         <?php endforeach; ?>
         </tbody>
     </table>
-</div>
-</body>
-</html>
+<?php require_once(ROOT.'/views/layouts/footer.php'); ?>

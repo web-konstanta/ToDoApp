@@ -20,4 +20,20 @@ class Task
 
         return $tasks;
     }
+
+    public static function create($name, $description)
+    {
+        $db = Db::getConnection();
+
+        $sql = 'INSERT INTO tasks (name, description) VALUES (:name, :description)';
+
+        $result = $db->prepare($sql);
+        $result->bindParam(':name', $name, PDO::PARAM_STR);
+        $result->bindParam(':description', $description, PDO::PARAM_STR);
+
+        if ($result->execute()) {
+            header('Location: /');
+        }
+        die('failed to add');
+    }
 }
