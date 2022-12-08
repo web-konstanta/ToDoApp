@@ -35,20 +35,20 @@ class Task
         }
     }
 
-    public static function create($name, $description)
+    public static function create($options)
     {
         $db = Db::getConnection();
 
         $sql = 'INSERT INTO tasks (name, description) VALUES (:name, :description)';
 
         $result = $db->prepare($sql);
-        $result->bindParam(':name', $name, PDO::PARAM_STR);
-        $result->bindParam(':description', $description, PDO::PARAM_STR);
+        $result->bindParam(':name', $options['name'], PDO::PARAM_STR);
+        $result->bindParam(':description', $options['description'], PDO::PARAM_STR);
 
         return $result->execute();
     }
 
-    public static function update($id, $name, $description)
+    public static function update($id, $options)
     {
         $db = Db::getConnection();
 
@@ -60,8 +60,8 @@ class Task
 
         $result = $db->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_INT);
-        $result->bindParam(':name', $name, PDO::PARAM_STR);
-        $result->bindParam(':description', $description, PDO::PARAM_STR);
+        $result->bindParam(':name', $options['name'], PDO::PARAM_STR);
+        $result->bindParam(':description', $options['description'], PDO::PARAM_STR);
 
         $result->execute();
     }

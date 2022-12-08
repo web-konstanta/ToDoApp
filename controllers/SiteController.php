@@ -14,23 +14,21 @@ class SiteController
 
     public function actionCreate()
     {
-        $name = '';
-        $description = '';
         $errors = false;
         $result = false;
 
         if (isset($_POST['submit'])) {
-            $name = $_POST['name'];
-            $description = $_POST['description'];
+            $options['name'] = $_POST['name'];
+            $options['description'] = $_POST['description'];
 
-            if (!Validation::checkName($name)) {
+            if (!Validation::checkName($options['name'])) {
                 $errors[] = 'The name must not be shorter than 3 characters';
             }
-            if (!Validation::checkDescription($description)) {
+            if (!Validation::checkDescription($options['description'])) {
                 $errors[] = 'The description must not be shorter than 10 characters';
             }
             if ($errors === false) {
-                $result = Task::create($name, $description);
+                $result = Task::create($options);
 
                 $_SESSION['success'] = 'Successful adding of the task';
                 header('Location: /');
@@ -45,16 +43,13 @@ class SiteController
     {
         $taskItem = Task::getTaskById($id);
 
-        $name = '';
-        $description = '';
-        $result = false;
-
         if (isset($_POST['submit'])) {
-            $name = $_POST['name'];
-            $description = $_POST['description'];
+            $options['name'] = $_POST['name'];
+            $options['description'] = $_POST['description'];
 
-            Task::update($id, $name, $description);
+            Task::update($id, $options);
 
+            $_SESSION['success'] = 'Successful updating of the task';
             header('Location: /');
         }
 
