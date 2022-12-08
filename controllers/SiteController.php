@@ -31,6 +31,9 @@ class SiteController
             }
             if ($errors === false) {
                 $result = Task::create($name, $description);
+
+                $_SESSION['success'] = 'Successful adding of the task';
+                header('Location: /');
             }
         }
         require_once(ROOT.'/views/site/create.php');

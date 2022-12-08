@@ -45,10 +45,7 @@ class Task
         $result->bindParam(':name', $name, PDO::PARAM_STR);
         $result->bindParam(':description', $description, PDO::PARAM_STR);
 
-        if ($result->execute()) {
-            header('Location: /');
-        }
-        die('failed to add');
+        return $result->execute();
     }
 
     public static function update($id, $name, $description)

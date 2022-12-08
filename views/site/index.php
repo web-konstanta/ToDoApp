@@ -6,6 +6,12 @@
     <button type="button" class="btn btn-danger">
         <a href="/truncate" style="color: white; text-decoration: none">Delete all tasks</a>
     </button>
+    <?php if (isset($_SESSION['success'])): ?>
+        <h3 class="text-success">
+            - <?php echo $_SESSION['success'];
+                unset($_SESSION['success']); ?>
+        </h3>
+    <?php endif; ?>
     <table class="table">
         <thead>
         <tr>
